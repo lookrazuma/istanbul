@@ -1,0 +1,25 @@
+@startuml
+
+class Customer {
+  - name: String
+  - email: String
+  + placeOrder(): void
+}
+
+class Order {
+  - orderId: int
+  - date: Date
+  + calculateTotal(): double
+}
+
+class PremiumCustomer {
+  + getRewards(): void
+}
+
+' Связь "Customer" с "Order" (один ко многим)
+Customer "1" -- "0..*" Order : places
+
+' Наследование: PremiumCustomer наследуется от Customer
+Customer <|-- PremiumCustomer
+
+@enduml
